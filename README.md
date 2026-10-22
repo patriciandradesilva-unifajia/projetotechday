@@ -1,1 +1,0 @@
-batalha_dos_cerebros/README.md
