@@ -23,20 +23,6 @@
 
 ---
 
-## 🚀 Como Subir no Netlify em 30 Segundos
-
-### Opção 1: Netlify Drop (Arrastar e Soltar — Sem Linha de Comando)
-1. Acesse: **[app.netlify.com/drop](https://app.netlify.com/drop)** no seu navegador.
-2. Abra a pasta do jogo no seu computador:
-   `C:\Users\patri\.gemini\antigravity\scratch\batalha_dos_cerebros`
-3. **Arraste e solte essa pasta inteira** dentro do quadrado na tela do Netlify.
-4. Pronto! O site estará no ar com link público HTTPS (ex: `https://batalha-dos-cerebros.netlify.app`).
-
-### Opção 2: Testar Localmente no seu Computador
-- Dê **dois cliques** no arquivo `index.html`. Ele abrirá instantaneamente em qualquer navegador (Chrome, Edge, Firefox, Safari) sem precisar de internet ou instalação.
-
----
-
 ## 🎮 Estrutura dos 3 Desafios Cognitivos
 
 1. **Rodada 1: Raciocínio Lógico (Logic Matrix)**:
