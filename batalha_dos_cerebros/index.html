@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batalha dos Cérebros — Humano vs. IA 🧠</title>
+  <meta name="description" content="Desafie a Inteligência Artificial em testes de raciocínio, memória e reflexos. Entre no ranking da feira!">
+  
+  <!-- Tipografia Moderna de Alto Padrão (Outfit + Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Canvas de Sinapses Neurais em Segundo Plano -->
+  <canvas id="neural-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="app-layout">
+    
+    <!-- Navbar Minimalista e Elegante -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg class="brain-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" stroke="url(#logo-grad)" stroke-width="2.5" stroke-dasharray="4 3"/>
+            <path d="M16 22C14.5 22 13 23.5 13 25.5C13 27.5 14.5 29 16.5 29C17 29 17.5 28.8 18 28.5C18.5 31 21 33 24 33C27 33 29.5 31 30 28.5C30.5 28.8 31 29 31.5 29C33.5 29 35 27.5 35 25.5C35 23.5 33.5 22 32 22C32 18 28.5 15 24 15C19.5 15 16 18 16 22Z" stroke="url(#logo-grad)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="3" fill="#00f5a0"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00f5a0"/>
+                <stop offset="1" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">BATALHA DOS CÉREBROS</span>
+          <span class="brand-badge">HUMANO VS. INTELIGÊNCIA ARTIFICIAL</span>
+        </div>
+      </div>
+
+      <div class="nav-controls">
+        <button id="btn-sound-toggle" class="nav-btn icon-btn" title="Alternar Efeitos Sonoros">
+          <span id="sound-icon">🔊</span>
+        </button>
+        <button id="btn-nav-ranking" class="nav-btn primary-glass-btn">
+          <span class="btn-icon">🏆</span>
+          <span>Hall da Fama</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         TELA 1: CADASTRO DO VISITANTE (ENTRADA)
+         ======================================================== -->
+    <main id="screen-welcome" class="screen active">
+      <div class="welcome-container">
+        
+        <div class="hero-header">
+          <div class="pill-tag">
+            <span class="pulsing-dot"></span>
+            ARENA NEURAL AO VIVO • ESTANDE ACADÊMICO
+          </div>
+          <h1 class="main-heading">
+            O seu cérebro biológico consegue superar a <span class="gradient-text-ai">Inteligência Artificial?</span>
+          </h1>
+          <p class="main-subheading">
+            Participe de um confronto rápido de <strong>3 rodadas</strong> testando seu 
+            <strong>Raciocínio Matemático</strong>, <strong>Memória Fotográfica</strong> e <strong>Velocidade de Reflexo</strong> contra o algoritmo neural <em>AURA-7</em>.
+          </p>
+        </div>
+
+        <div class="registration-glass-card">
+          <form id="form-player-register">
+            
+            <div class="form-row">
+              <div class="input-field-wrap">
+                <label for="player-name">Identificação do Visitante</label>
+                <div class="input-box">
+                  <span class="input-icon">👤</span>
+                  <input type="text" id="player-name" placeholder="Digite seu nome ou apelido" maxlength="22" required autocomplete="off">
+                </div>
+              </div>
+
+              <div class="input-field-wrap">
+                <label for="player-course">Curso / Colégio / Instituição</label>
+                <div class="input-box">
+                  <span class="input-icon">🎓</span>
+                  <input type="text" id="player-course" placeholder="Ex: Eng. da Computação, Visitante..." maxlength="28" autocomplete="off">
+                </div>
+              </div>
+            </div>
+
+            <div class="difficulty-group">
+              <label class="group-label">Nível de Processamento da I.A.</label>
+              <div class="difficulty-grid">
+                
+                <label class="diff-card">
+                  <input type="radio" name="difficulty" value="EASY">
+                  <div class="diff-card-body">
+                    <div class="diff-header">
+                      <span class="diff-badge green">Nível 1</span>
+                      <span class="diff-icon">🌱</span>
+                    </div>
+                    <span class="diff-name">Calouro Neural</span>
+                    <span class="diff-info">IA com tempo de resposta humano e taxa de erro natural.</span>
+                  </div>
+                </label>
+
+                <label class="diff-card active">
+                  <input type="radio" name="difficulty" value="MEDIUM" checked>
+                  <div class="diff-card-body">
+                    <div class="diff-header">
+                      <span class="diff-badge purple">Nível 2 (Padrão)</span>
+                      <span class="diff-icon">⚡</span>
+                    </div>
+                    <span class="diff-name">Rede Deep Learning</span>
+                    <span class="diff-info">IA veloz, competitiva e com alta precisão de cálculo.</span>
+                  </div>
+                </label>
+
+                <label class="diff-card">
+                  <input type="radio" name="difficulty" value="HARD">
+                  <div class="diff-card-body">
+                    <div class="diff-header">
+                      <span class="diff-badge rose">Nível 3 (Mestre)</span>
+                      <span class="diff-icon">🧠🔥</span>
+                    </div>
+                    <span class="diff-name">Super I.A. Quântica</span>
+                    <span class="diff-info">Respostas quase instantâneas. Para os mais corajosos!</span>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <button type="submit" class="start-battle-btn">
+              <span>ENTRAR NA ARENA E DESAFIAR A I.A.</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+          </form>
+        </div>
+
+        <div class="welcome-stats-bar">
+          <div class="mini-stat">
+            <span class="stat-icon">⚡</span>
+            <span>Duração da Partida: <strong>~2 minutos</strong></span>
+          </div>
+          <div class="mini-stat">
+            <span class="stat-icon">🏆</span>
+            <span>Disputa direta no <strong>Ranking da Feira</strong></span>
+          </div>
+          <div class="mini-stat">
+            <span class="stat-icon">📱</span>
+            <span>Disponível no link do <strong>Netlify</strong></span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ========================================================
+         TELA 2: ARENA DE COMBATE AO VIVO (BATTLE)
+         ======================================================== -->
+    <main id="screen-battle" class="screen">
+      
+      <!-- Placar Superior Esportivo / Confronto Direto -->
+      <section class="battle-dashboard">
+        
+        <!-- Cartão do Jogador Humano -->
+        <div class="competitor-card human-card">
+          <div class="competitor-avatar human-glow">
+            <span>🧑‍💻</span>
+          </div>
+          <div class="competitor-meta">
+            <div class="competitor-tag">HUMANO (VOCÊ)</div>
+            <div class="competitor-name" id="hud-human-name">Jogador</div>
+            <div class="competitor-score" id="hud-human-score">0 <small>PTS</small></div>
+          </div>
+          <div class="streak-badge" id="hud-combo-badge">Combo 0x 🔥</div>
+        </div>
+
+        <!-- Módulo Central do Confronto -->
+        <div class="match-center-module">
+          <div class="round-indicator-pill" id="hud-round-pill">
+            <span class="round-num">ETAPA 1/3</span>
+            <span class="round-name" id="hud-round-title">RACIOCÍNIO LÓGICO</span>
+          </div>
+
+          <!-- Cronômetro Circular / Digital -->
+          <div class="timer-display-wrap">
+            <div class="timer-digits" id="hud-timer">15</div>
+            <span class="timer-unit">SEG</span>
+          </div>
+
+          <div class="ai-status-pill" id="hud-ai-status">
+            <span class="status-dot"></span>
+            <span id="hud-ai-status-text">I.A. analisando padrões...</span>
+          </div>
+        </div>
+
+        <!-- Cartão da Inteligência Artificial -->
+        <div class="competitor-card ai-card">
+          <div class="competitor-meta text-right">
+            <div class="competitor-tag ai-tag">SISTEMA NEURAL</div>
+            <div class="competitor-name">AURA-7 (I.A.)</div>
+            <div class="competitor-score ai-score" id="hud-ai-score">0 <small>PTS</small></div>
+          </div>
+          <div class="competitor-avatar ai-glow">
+            <span>🤖</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Barra de Disputa Neural (Cabo de Guerra Mental) -->
+      <div class="neural-tug-bar-container">
+        <div class="tug-bar-labels">
+          <span class="label-human">DOMÍNIO DO CÉREBRO HUMANO</span>
+          <span class="dominance-percent" id="hud-dominance-pct">50% vs 50%</span>
+          <span class="label-ai">DOMÍNIO DO ALGORITMO I.A.</span>
+        </div>
+        <div class="tug-track">
+          <div class="tug-fill-human" id="hud-tug-human" style="width: 50%;"></div>
+        </div>
+      </div>
+
+      <!-- Palco Central dos Desafios -->
+      <section class="gameplay-stage">
+
+        <!-- SUBJOGO 1: RACIOCÍNIO LÓGICO -->
+        <div id="game-logic" class="game-module">
+          <div class="stage-prompt">
+            <span class="prompt-instruction">Resolva a equação ou complete a sequência lógica:</span>
+            <div class="equation-display" id="logic-equation-display">12 + ? = 45</div>
+          </div>
+          <div class="answers-grid" id="logic-answers-grid">
+            <!-- Botões gerados via JS -->
+          </div>
+        </div>
+
+        <!-- SUBJOGO 2: MEMÓRIA RELÂMPAGO -->
+        <div id="game-memory" class="game-module hidden">
+          <div class="stage-prompt">
+            <span class="prompt-instruction" id="memory-instruction">Memorize a sequência das sinapses sonoras...</span>
+            <div class="memory-progress-dots" id="memory-sequence-dots">
+              <!-- Indicadores de progresso -->
+            </div>
+          </div>
+          
+          <div class="memory-pads-grid" id="memory-pads-container">
+            <button class="pad-node" data-index="0"></button>
+            <button class="pad-node" data-index="1"></button>
+            <button class="pad-node" data-index="2"></button>
+            <button class="pad-node" data-index="3"></button>
+            <button class="pad-node" data-index="4"></button>
+            <button class="pad-node" data-index="5"></button>
+            <button class="pad-node" data-index="6"></button>
+            <button class="pad-node" data-index="7"></button>
+            <button class="pad-node" data-index="8"></button>
+          </div>
+        </div>
+
+        <!-- SUBJOGO 3: VELOCIDADE & REFLEXO (STROOP COGNITIVO COM ALTERNÂNCIA DE REGRA) -->
+        <div id="game-speed" class="game-module hidden">
+          <div class="stage-prompt">
+            <div class="rule-switch-banner" id="stroop-rule-banner">
+              REGRA ATIVA: <span id="stroop-rule-text">COR DA TINTA</span>
+            </div>
+            <span class="prompt-instruction" id="stroop-sub-instruction">Foque imediatamente na cor visual, ignore o texto!</span>
+            <div class="stroop-word-card" id="stroop-card">
+              <span id="stroop-text">VERMELHO</span>
+            </div>
+          </div>
+          <div class="speed-answers-grid" id="speed-answers-grid">
+            <!-- Botões de cores gerados via JS -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Terminal de Telemetria da IA em Tempo Real -->
+      <footer class="telemetry-bar">
+        <span class="telemetry-tag">TELEMETRIA I.A.</span>
+        <span class="telemetry-line" id="ai-telemetry-text">Inicializando tensores neurais...</span>
+      </footer>
+
+    </main>
+
+    <!-- ========================================================
+         TELA 3: RESULTADOS E DIAGNÓSTICO CEREBRAL
+         ======================================================== -->
+    <main id="screen-result" class="screen">
+      <div class="result-container">
+        
+        <div class="result-card-glass">
+          
+          <div class="result-hero-badge" id="res-badge-icon">👑</div>
+          <h2 class="result-headline" id="res-title">VITÓRIA DO CÉREBRO HUMANO!</h2>
+          <p class="result-summary" id="res-desc">
+            Sua intuição biológica e tempo de reação superaram o modelo neural artificial.
+          </p>
+
+          <!-- Placar Comparativo Estilo Duelo -->
+          <div class="final-score-duel">
+            <div class="duel-box human-box">
+              <span class="duel-label">HUMANO (VOCÊ)</span>
+              <span class="duel-points" id="res-human-pts">2.840</span>
+              <span class="duel-sub">PONTOS</span>
+            </div>
+            
+            <div class="duel-vs-circle">VS</div>
+
+            <div class="duel-box ai-box">
+              <span class="duel-label">AURA-7 (I.A.)</span>
+              <span class="duel-points" id="res-ai-pts">2.100</span>
+              <span class="duel-sub">PONTOS</span>
+            </div>
+          </div>
+
+          <!-- Métricas Cognitivas do Jogador -->
+          <div class="cognitive-metrics-grid">
+            <div class="metric-card">
+              <div class="metric-icon">📐</div>
+              <div class="metric-val" id="res-logic-pct">92%</div>
+              <div class="metric-lbl">Precisão Lógica</div>
+            </div>
+            
+            <div class="metric-card">
+              <div class="metric-icon">🧬</div>
+              <div class="metric-val" id="res-memory-level">Nível 5</div>
+              <div class="metric-lbl">Retenção de Memória</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon">⚡</div>
+              <div class="metric-val" id="res-speed-ms">380ms</div>
+              <div class="metric-lbl">Velocidade de Reflexo</div>
+            </div>
+          </div>
+
+          <div class="leaderboard-status-banner" id="res-leaderboard-banner">
+            🎉 <strong>Parabéns!</strong> Seu resultado foi gravado no <strong>Hall da Fama</strong> dos visitantes!
+          </div>
+
+          <div class="result-action-buttons">
+            <button id="btn-result-view-ranking" class="primary-glass-btn btn-cta">
+              <span>🏆 Ver Tabela de Classificação</span>
+            </button>
+            <button id="btn-result-play-again" class="secondary-glass-btn btn-cta">
+              <span>Novo Visitante / Jogar Novamente</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ========================================================
+         TELA 4: HALL DA FAMA (RANKING DOS VISITANTES)
+         ======================================================== -->
+    <main id="screen-ranking" class="screen">
+      <div class="ranking-container">
+        
+        <div class="ranking-glass-card">
+          
+          <div class="ranking-top-bar">
+            <div>
+              <div class="pill-tag small">PLACAR AO VIVO DA FEIRA</div>
+              <h2 class="ranking-main-title">🏆 Hall da Fama dos Visitantes</h2>
+              <p class="ranking-subtitle">Classificação geral dos competidores que enfrentaram a Inteligência Artificial</p>
+            </div>
+            <button id="btn-ranking-back" class="secondary-glass-btn">
+              <span>⬅ Voltar ao Início</span>
+            </button>
+          </div>
+
+          <!-- Pódio Ilustrado dos 3 Melhores -->
+          <div class="podium-showcase" id="podium-showcase">
+            <!-- Renderizado dinamicamente via JS -->
+          </div>
+
+          <!-- Tabela com todos os participantes -->
+          <div class="leaderboard-table-scroller">
+            <table class="leaderboard-table">
+              <thead>
+                <tr>
+                  <th style="width: 70px;">Rank</th>
+                  <th>Competidor</th>
+                  <th>Instituição / Curso</th>
+                  <th>Nível IA</th>
+                  <th>Pontuação</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-rows">
+                <!-- Linhas inseridas via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ranking-footer-controls">
+            <button id="btn-clear-leaderboard" class="danger-subtle-btn">
+              <span>🗑️ Limpar Dados do Estande</span>
+            </button>
+            <button id="btn-ranking-play" class="primary-glass-btn">
+              <span>⚡ Desafiar a I.A. Agora</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
