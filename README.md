@@ -32,9 +32,3 @@
 3. **Rodada 3: Velocidade e Reflexo Cognitivo (Teste Stroop)**:
    - O participante precisa identificar a cor da tinta da palavra no menor número de milissegundos possível antes da I.A. responder.
 
----
-
-## 💡 Recomendações para o Dia da Feira / Estande
-
-- **Modo Tela Cheia**: Pressione **F11** no navegador do computador do estande para uma imersão total.
-- **QR Code no Estande**: Crie um QR Code com o link do Netlify e coloque na mesa para os visitantes jogarem no celular enquanto aguardam a fila!
