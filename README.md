@@ -1,2 +1,1 @@
-# projetotechday
-Quiz de raciocínio lógico humano vs IA
+batalha_dos_cerebros/README.md
